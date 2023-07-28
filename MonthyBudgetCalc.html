@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting Calculator</title>
+</head>
+<body>
+    <h1>Monthly Salary Budget Calculator</h1>
+    <h3>This program splits your montly earnings into 3 categories for best budgeting practices.</h3> 
+    <p> 50% should be allocated to Needs such as:</p>
+    <ul>
+        <li>Housing</li>
+        <li>Food</li>
+        <li>Utilities</li>
+        <li>Healthcare</li>
+        <li>Insurance</li>
+    </ul>
+
+    <p> 30% should be allocated to Wants such as:</p>
+    <ul> 
+        <li>Casino/Lottery</li><li>Personal care</li>
+        <li>Entertainment</li>
+        <li>Hobbies</li>
+        <li>Subscriptions</li>
+    </ul>
+
+    <p> 20% should be allocated to Savings such as:</p>
+    <ul>
+        <li>Emergencies</li>
+        <li>Savings</li>
+        <li>401k</li>
+        <li>Investments</li>
+    </ul>
+
+    <form>
+        <label for="salary">Enter your monthly salary:</label>
+        <input type="number" id="salary" required>
+        <button type="button" onclick="calculateBudget()">Calculate</button>
+    </form>
+    <div id="budgetResult">
+        <!-- Budgeting results will be displayed here -->
+    </div>
+
+    <script>
+        function calculateBudget() {
+            const salaryInput = document.getElementById('salary');
+            const salary = parseFloat(salaryInput.value);
+            if (isNaN(salary)) {
+                alert('Please enter a valid monthly salary.');
+                return;
+            }
+
+            const needsBudget = salary * 0.5;
+            const savingsBudget = salary * 0.2;
+            const wantsBudget = salary * 0.3;
+
+            const budgetResultDiv = document.getElementById('budgetResult');
+            budgetResultDiv.innerHTML = `
+                <h2>Budget Allocation:</h2>
+                <p>Needs: $${needsBudget.toFixed(2)}</p>
+                <p>Wants: $${wantsBudget.toFixed(2)}</p>
+                <p>Savings: $${savingsBudget.toFixed(2)}</p>
+                
+            `;
+        }
+    </script>
+</body>
+</html>
